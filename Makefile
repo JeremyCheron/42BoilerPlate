@@ -6,7 +6,7 @@
 #    By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 15:12:51 by jcheron           #+#    #+#              #
-#    Updated: 2024/10/27 15:50:15 by jcheron          ###   ########.fr        #
+#    Updated: 2024/10/27 15:52:44 by jcheron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,15 +41,15 @@ OBJS				:=		$(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(FILES)))
 #                                                                              #
 # ############################################################################ #
 
-DEF_COLOR = \033[0;39m
-GRAY = \033[0;90m
-RED = \033[0;91m
-GREEN = \033[0;92m
-YELLOW = \033[0;93m
-BLUE = \033[0;94m
-MAGENTA = \033[0;95m
-CYAN = \033[0;96m
-WHITE = \033[0;97m
+DEF_COLOR			=	\033[0;39m
+GRAY				=	\033[0;90m
+RED					=	\033[0;91m
+GREEN				=	\033[0;92m
+YELLOW				=	\033[0;93m
+BLUE				=	\033[0;94m
+MAGENTA				=	\033[0;95m
+CYAN				=	\033[0;96m
+WHITE				=	\033[0;97m
 TERM_UP				=	\033[1A
 TERM_CLEAR_LINE		=	\033[2K\r
 
@@ -91,15 +91,15 @@ fclean: clean
 re:		fclean all
 
 norminette:
-	@norminette $(SRC_DIR) $(INC_DIR) | grep -Ev '^Notice|OK!$$'	\
-	&& $(ECHO) -e '\033[1;31mNorminette KO!'						\
-	|| $(ECHO) -e '\033[1;32mNorminette OK!'
+		@norminette $(SRC_DIR) $(INC_DIR) | grep -Ev '^Notice|OK!$$'	\
+		&& $(ECHO) -e '\033[1;31mNorminette KO!'						\
+		|| $(ECHO) -e '\033[1;32mNorminette OK!'
 
 _header:
-	@printf "$(GREEN)Welcome to $(BLUE)\"%s\"$(GREEN) builder !\n$(DEF_COLOR)" $(TARGET)
+		@printf "$(GREEN)Welcome to $(BLUE)\"%s\"$(GREEN) builder !\n$(DEF_COLOR)" $(TARGET)
 
 _obj_header:
-	@printf "$(MAGENTA)Building objects$(DEF_COLOR)...\n"
+		@printf "$(MAGENTA)Building objects$(DEF_COLOR)...\n"
 
 _obj_footer:
-	@printf "$(TERM_UP)$(TERM_CLEAR_LINE)$(GREEN)Done building $(BLUE)%d$(GREEN) object(s) !\n$(DEF_COLOR)" $(words $(OBJS))
+		@printf "$(TERM_UP)$(TERM_CLEAR_LINE)$(GREEN)Done building $(BLUE)%d$(GREEN) object(s) !\n$(DEF_COLOR)" $(words $(OBJS))
