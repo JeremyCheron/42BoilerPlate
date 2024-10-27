@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 08:06:36 by jcheron           #+#    #+#             */
-/*   Updated: 2024/10/17 15:52:32 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/10/27 15:46:09 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,6 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }				t_list;
-
-typedef struct s_split_next
-{
-	size_t	start;
-	size_t	length;
-}				t_split_next;
-
 int		ft_atoi(const char *str);
 
 void	ft_bzero(void *s, size_t n);

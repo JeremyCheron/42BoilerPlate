@@ -6,7 +6,7 @@
 #    By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 15:12:51 by jcheron           #+#    #+#              #
-#    Updated: 2024/10/27 15:41:25 by jcheron          ###   ########.fr        #
+#    Updated: 2024/10/27 15:49:17 by jcheron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ all:	$(TARGET)
 
 clean:
 		@printf "$(YELLOW)Removing %d objects...\n$(DEF_COLOR)" $(words $(OBJS))
-		@$(RM) -r $(OBJS)
+		@$(RM) -rf $(OBJ_DIR)
 
 fclean: clean
 		@printf "$(YELLOW)Removing \"%s\"...\n$(DEF_COLOR)" $(TARGET)
@@ -91,7 +91,6 @@ _obj_footer:
 $(TARGET): _header _obj_header $(OBJS) _obj_footer
 	@printf "$(MAGENTA)Making archive $(BLUE)\"%s\"$(MAGENTA)...$(DEF_COLOR)" $@
 	@ar -rcs $@ $(OBJS)
-	@cp $(INC_DIR)/libft.h .
 	@printf "$(TERM_CLEAR_LINE)$(GREEN)Done building archive $(BLUE)\"%s\"$(GREEN) !\n$(DEF_COLOR)" $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
