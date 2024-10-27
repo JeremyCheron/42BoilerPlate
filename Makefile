@@ -6,7 +6,7 @@
 #    By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 15:12:51 by jcheron           #+#    #+#              #
-#    Updated: 2024/10/27 15:49:17 by jcheron          ###   ########.fr        #
+#    Updated: 2024/10/27 15:50:15 by jcheron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,23 @@ TERM_CLEAR_LINE		=	\033[2K\r
 
 # ############################################################################ #
 #                                                                              #
+#                           Bin / Lib                                          #
+#                                                                              #
+# ############################################################################ #
+
+$(TARGET): _header _obj_header $(OBJS) _obj_footer
+	@printf "$(MAGENTA)Making archive $(BLUE)\"%s\"$(MAGENTA)...$(DEF_COLOR)" $@
+	@ar -rcs $@ $(OBJS)
+	@printf "$(TERM_CLEAR_LINE)$(GREEN)Done building archive $(BLUE)\"%s\"$(GREEN) !\n$(DEF_COLOR)" $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@printf "$(TERM_CLEAR_LINE)$(MAGENTA)Compiling $(BLUE)\"%s\"$(MAGENTA)...\n$(DEF_COLOR)" $@
+	@mkdir -p $(@D)
+	@$(CC) -c $< -o $@ -I$(INC_DIR) $(CFLAGS)
+	@printf "$(TERM_UP)"
+
+# ############################################################################ #
+#                                                                              #
 #                           Rules                                              #
 #                                                                              #
 # ############################################################################ #
@@ -86,15 +103,3 @@ _obj_header:
 
 _obj_footer:
 	@printf "$(TERM_UP)$(TERM_CLEAR_LINE)$(GREEN)Done building $(BLUE)%d$(GREEN) object(s) !\n$(DEF_COLOR)" $(words $(OBJS))
-
-
-$(TARGET): _header _obj_header $(OBJS) _obj_footer
-	@printf "$(MAGENTA)Making archive $(BLUE)\"%s\"$(MAGENTA)...$(DEF_COLOR)" $@
-	@ar -rcs $@ $(OBJS)
-	@printf "$(TERM_CLEAR_LINE)$(GREEN)Done building archive $(BLUE)\"%s\"$(GREEN) !\n$(DEF_COLOR)" $@
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@printf "$(TERM_CLEAR_LINE)$(MAGENTA)Compiling $(BLUE)\"%s\"$(MAGENTA)...\n$(DEF_COLOR)" $@
-	@mkdir -p $(@D)
-	@$(CC) -c $< -o $@ -I$(INC_DIR) $(CFLAGS)
-	@printf "$(TERM_UP)"
