@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 16:46:33 by jcheron           #+#    #+#             */
-/*   Updated: 2024/10/27 15:38:42 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/10/29 21:24:08 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdint.h>
+# include "libft.h"
 
 int		ft_printf(const char *str, ...);
 int		ft_print_c(char c);

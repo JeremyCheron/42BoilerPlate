@@ -6,7 +6,7 @@
 #    By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 15:12:51 by jcheron           #+#    #+#              #
-#    Updated: 2024/10/29 16:20:32 by jcheron          ###   ########.fr        #
+#    Updated: 2024/10/29 21:20:56 by jcheron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -135,6 +135,9 @@ TEST_LIBFT			:=		$(TEST_DIR)libft_test.c
 TEST_OBJS_LIBFT		:=		$(TEST_DIR)libft_test.o
 TEST_PRINTF			:=		$(TEST_DIR)printf_test.c
 TEST_OBJS_PRINTF	:=		$(TEST_DIR)printf_test.o
+TEST_GNL			:=		$(TEST_DIR)gnl_test.c
+TEST_OBJS_GNL		:=		$(TEST_DIR)gnl_test.o
+
 clone:
 		@if [ ! -d "$(TEST_DIR)" ]; then \
 			echo "Cloning repository..."; \
@@ -157,4 +160,9 @@ testlibft: $(TARGET) $(TEST_OBJS_LIBFT)
 testprintf: $(TARGET) $(TEST_OBJS_PRINTF)
 	@echo -e "$(MAGENTA)Running tests...$(DEF_COLOR)"
 	@$(CC) $(CCFLAGS) -I$(INC_DIR) -o $(TEST_DIR)test $(TEST_OBJS_PRINTF) $(TARGET)
+	@./$(TEST_DIR)test
+
+testgnl: $(TARGET) $(TEST_OBJS_GNL)
+	@echo -e "$(MAGENTA)Running tests...$(DEF_COLOR)"
+	@$(CC) $(CCFLAGS) -I$(INC_DIR) -o $(TEST_DIR)test $(TEST_OBJS_GNL) $(TARGET)
 	@./$(TEST_DIR)test

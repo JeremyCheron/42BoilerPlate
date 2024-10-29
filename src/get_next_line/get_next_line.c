@@ -6,11 +6,12 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:40:28 by jcheron           #+#    #+#             */
-/*   Updated: 2024/10/27 14:42:53 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/10/29 21:22:12 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 
 static char	*_ft_strchr(char *s, int c)
 {
