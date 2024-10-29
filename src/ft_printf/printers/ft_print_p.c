@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 08:35:47 by jcheron           #+#    #+#             */
-/*   Updated: 2024/10/21 10:37:21 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:13:47 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,9 @@
 
 int	ft_put_ptr(uintptr_t ptr)
 {
-	int		count;
-	char	*chars;
-
-	count = 0;
-	chars = "0123456789abcdef";
 	if (ptr >= 16)
-	{
-		count += ft_put_ptr(ptr / 16);
-		count += ft_put_ptr(ptr % 16);
-	}
-	else
-		count += ft_print_c(chars[ptr]);
-	if (count < 0)
-		return (-1);
-	return (count);
+		return (ft_put_ptr(ptr / 16) + ft_put_ptr(ptr % 16));
+	return (ft_print_c("0123456789abcdef"[ptr]));
 }
 
 int	ft_print_p(uintptr_t ptr)
@@ -36,6 +24,8 @@ int	ft_print_p(uintptr_t ptr)
 	int	count;
 
 	count = 0;
+	if (!ptr)
+		return (ft_printf("(nil)"));
 	count += ft_print_s("0x");
 	if (count < 0)
 		return (-1);

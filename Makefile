@@ -6,7 +6,7 @@
 #    By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 15:12:51 by jcheron           #+#    #+#              #
-#    Updated: 2024/10/27 15:58:44 by jcheron          ###   ########.fr        #
+#    Updated: 2024/10/29 16:20:32 by jcheron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 #                                                                              #
 # ############################################################################ #
 
-.PHONY:	all clean fclean re norminette _header _obj_header _obj_footer
+.PHONY:	all clean fclean re norminette _header _obj_header _obj_footer test
 
 all:	$(TARGET)
 
@@ -103,3 +103,58 @@ _obj_header:
 
 _obj_footer:
 		@printf "$(TERM_UP)$(TERM_CLEAR_LINE)$(GREEN)Done building $(BLUE)%d$(GREEN) object(s) !\n$(DEF_COLOR)" $(words $(OBJS))
+		@echo "     __       .__                                "
+	@echo "    |__| ____ |  |__   ___________  ____   ____  "
+	@echo "    |  |/ ___\|  |  \_/ __ \_  __ \/  _ \ /    \ "
+	@echo "    |  \  \___|   Y  \  ___/|  | \(  <_> )   |  \\"
+	@echo "/\\__|  |\___  >___|  /\___  >__|   \____/|___|  /"
+	@echo "\______|    \/     \/     \/                  \/ "
+	@echo "                      ____                       "
+	@echo "                     /  _ \                      "
+	@echo "  ______    ______   >  _ </\\   ______    ______ "
+	@echo " /_____/   /_____/  /  <_\ \\/  /_____/   /_____/ "
+	@echo "                    \\_____\\ \\                    "
+	@echo "                           \\/                     "
+	@echo "                     .__    .__.__  .__          "
+	@echo "   ____  __ ________ |  |__ |__|  | |__|_____    "
+	@echo "  / ___\\|  |  \\____ \\|  |  \\|  |  | |  \\____ \\   "
+	@echo " / /_/  >  |  /  |_> >   Y  \\  |  |_|  |  |_> >  "
+	@echo " \\___  /|____/|   __/|___|  /__|____/__|   __/   "
+	@echo "/_____/       |__|        \\/           |__|       "
+
+
+# ############################################################################ #
+#                                                                              #
+#                           Tests / Test Rules                                 #
+#                                                                              #
+# ############################################################################ #
+
+REPO_URL			:=		git@github.com:JeremyCheron/42TestRepo.git
+TEST_DIR			:=		tests/
+TEST_LIBFT			:=		$(TEST_DIR)libft_test.c
+TEST_OBJS_LIBFT		:=		$(TEST_DIR)libft_test.o
+TEST_PRINTF			:=		$(TEST_DIR)printf_test.c
+TEST_OBJS_PRINTF	:=		$(TEST_DIR)printf_test.o
+clone:
+		@if [ ! -d "$(TEST_DIR)" ]; then \
+			echo "Cloning repository..."; \
+			git clone $(REPO_URL) $(TEST_DIR); \
+		else \
+			echo "Directory '$(TEST_DIR)' already exists. Skipping clone then pull."; \
+			git pull; \
+		fi
+
+$(TEST_DIR)%.o: $(TEST_DIR)%.c
+	@printf "$(TERM_CLEAR_LINE)$(MAGENTA)Compiling test $(BLUE)\"%s\"$(MAGENTA)...\n$(DEF_COLOR)" $@
+	@$(CC) -c $< -o $@ -I$(INC_DIR) $(CCFLAGS)
+	@printf "$(TERM_UP)"
+
+testlibft: $(TARGET) $(TEST_OBJS_LIBFT)
+	@echo -e "$(MAGENTA)Running tests...$(DEF_COLOR)"
+	@$(CC) $(CCFLAGS) -I$(INC_DIR) -o $(TEST_DIR)test $(TEST_OBJS_LIBFT) $(TARGET) -lbsd
+	@./$(TEST_DIR)test
+
+testprintf: $(TARGET) $(TEST_OBJS_PRINTF)
+	@echo -e "$(MAGENTA)Running tests...$(DEF_COLOR)"
+	@$(CC) $(CCFLAGS) -I$(INC_DIR) -o $(TEST_DIR)test $(TEST_OBJS_PRINTF) $(TARGET)
+	@./$(TEST_DIR)test

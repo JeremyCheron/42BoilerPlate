@@ -10,4 +10,5 @@ FILES	=																						\
 		ft_printf/printers/ft_print_c ft_printf/printers/ft_print_d								\
 		ft_printf/printers/ft_print_x ft_printf/printers/ft_print_s								\
 		ft_printf/printers/ft_print_p ft_printf/printers/ft_print_u								\
-		get_next_line/get_next_line_utils get_next_line/get_next_line
+		get_next_line/get_next_line_utils get_next_line/get_next_line							\
+

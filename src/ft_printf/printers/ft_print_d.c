@@ -6,34 +6,25 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:12:52 by jcheron           #+#    #+#             */
-/*   Updated: 2024/10/19 15:37:06 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/10/22 16:50:27 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_putnbr(unsigned int n)
+static int	_ft_print_d(long n)
 {
-	int	count;
-
-	count = 0;
 	if (n >= 10)
-	{
-		count += ft_putnbr(n / 10);
-		count += ft_putnbr(n % 10);
-	}
-	else
-		count += ft_print_c(n + 48);
-	return (count);
+		return (ft_print_d(n / 10) + ft_print_d(n % 10));
+	return (ft_print_c(n + 48));
 }
 
 int	ft_print_d(int n)
 {
-	int	count;
+	long	_n;
 
-	count = 0;
-	count += ft_putnbr(n);
-	if (count < 0)
-		return (-1);
-	return (count);
+	_n = n;
+	if (n < 0)
+		return (write(STDOUT_FILENO, "-", 1) + _ft_print_d(-_n));
+	return (_ft_print_d(_n));
 }
