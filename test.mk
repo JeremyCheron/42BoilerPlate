@@ -29,15 +29,15 @@ $(TEST_DIR)%.o: $(TEST_DIR)%.c
 
 testlibft: $(TARGET) $(TEST_OBJS_LIBFT)
 	@echo -e "$(MAGENTA)Running tests...$(DEF_COLOR)"
-	@$(CC) $(CCFLAGS) -I$(INC_DIR) -o $(TEST_DIR)test $(TEST_OBJS_LIBFT) $(TARGET) -lbsd
-	@./$(TEST_DIR)test
+	@$(CC) $(CCFLAGS) -I$(INC_DIR) -o $(TEST_DIR)tester $(TEST_OBJS_LIBFT) $(TARGET) -lbsd
+	@./$(TEST_DIR)tester
 
 testprintf: $(TARGET) $(TEST_OBJS_PRINTF)
 	@echo -e "$(MAGENTA)Running tests...$(DEF_COLOR)"
-	@$(CC) $(CCFLAGS) -I$(INC_DIR) -o $(TEST_DIR)test $(TEST_OBJS_PRINTF) $(TARGET)
-	@./$(TEST_DIR)test
+	@$(CC) $(CCFLAGS) -I$(INC_DIR) -o $(TEST_DIR)tester $(TEST_OBJS_PRINTF) $(TARGET)
+	@./$(TEST_DIR)tester
 
 testgnl: $(TARGET) $(TEST_OBJS_GNL)
 	@echo -e "$(MAGENTA)Running tests...$(DEF_COLOR)"
-	@$(CC) $(CCFLAGS) -I$(INC_DIR) -o $(TEST_DIR)test $(TEST_OBJS_GNL) $(TARGET)
-	@./$(TEST_DIR)test
+	@$(CC) $(CCFLAGS) -I$(INC_DIR) -o $(TEST_DIR)tester $(TEST_OBJS_GNL) $(TARGET)
+	@./$(TEST_DIR)tester
