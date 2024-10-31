@@ -6,7 +6,7 @@
 #    By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 15:12:51 by jcheron           #+#    #+#              #
-#    Updated: 2024/10/31 12:19:54 by jcheron          ###   ########.fr        #
+#    Updated: 2024/10/31 15:13:30 by jcheron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CC					:=		cc
 CCFLAGS				:=		-Wall -Werror -Wextra
 # include	srcs.mk
 
-FILES = $(shell find $(SRC_DIR) -type f -name "*.c" | sed 's/\.c//' | sed 's/src//')
+FILES = $(shell find $(SRC_DIR) -type f -name "*.c" | sed 's/\.c//' | sed 's/$(SRC_DIR)//')
 # ############################################################################ #
 #                                                                              #
 #                           Objects                                            #
