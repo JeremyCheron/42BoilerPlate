@@ -6,7 +6,7 @@
 #    By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 15:12:51 by jcheron           #+#    #+#              #
-#    Updated: 2024/10/29 21:20:56 by jcheron          ###   ########.fr        #
+#    Updated: 2024/10/31 12:19:54 by jcheron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,9 @@ OBJ_DIR				:=		obj
 TARGET				:=		libftfull.a
 CC					:=		cc
 CCFLAGS				:=		-Wall -Werror -Wextra
-include	srcs.mk
+# include	srcs.mk
 
+FILES = $(shell find $(SRC_DIR) -type f -name "*.c" | sed 's/\.c//' | sed 's/src//')
 # ############################################################################ #
 #                                                                              #
 #                           Objects                                            #
@@ -123,46 +124,4 @@ _obj_footer:
 	@echo "/_____/       |__|        \\/           |__|       "
 
 
-# ############################################################################ #
-#                                                                              #
-#                           Tests / Test Rules                                 #
-#                                                                              #
-# ############################################################################ #
-
-REPO_URL			:=		git@github.com:JeremyCheron/42TestRepo.git
-TEST_DIR			:=		tests/
-TEST_LIBFT			:=		$(TEST_DIR)libft_test.c
-TEST_OBJS_LIBFT		:=		$(TEST_DIR)libft_test.o
-TEST_PRINTF			:=		$(TEST_DIR)printf_test.c
-TEST_OBJS_PRINTF	:=		$(TEST_DIR)printf_test.o
-TEST_GNL			:=		$(TEST_DIR)gnl_test.c
-TEST_OBJS_GNL		:=		$(TEST_DIR)gnl_test.o
-
-clone:
-		@if [ ! -d "$(TEST_DIR)" ]; then \
-			echo "Cloning repository..."; \
-			git clone $(REPO_URL) $(TEST_DIR); \
-		else \
-			echo "Directory '$(TEST_DIR)' already exists. Skipping clone then pull."; \
-			git pull; \
-		fi
-
-$(TEST_DIR)%.o: $(TEST_DIR)%.c
-	@printf "$(TERM_CLEAR_LINE)$(MAGENTA)Compiling test $(BLUE)\"%s\"$(MAGENTA)...\n$(DEF_COLOR)" $@
-	@$(CC) -c $< -o $@ -I$(INC_DIR) $(CCFLAGS)
-	@printf "$(TERM_UP)"
-
-testlibft: $(TARGET) $(TEST_OBJS_LIBFT)
-	@echo -e "$(MAGENTA)Running tests...$(DEF_COLOR)"
-	@$(CC) $(CCFLAGS) -I$(INC_DIR) -o $(TEST_DIR)test $(TEST_OBJS_LIBFT) $(TARGET) -lbsd
-	@./$(TEST_DIR)test
-
-testprintf: $(TARGET) $(TEST_OBJS_PRINTF)
-	@echo -e "$(MAGENTA)Running tests...$(DEF_COLOR)"
-	@$(CC) $(CCFLAGS) -I$(INC_DIR) -o $(TEST_DIR)test $(TEST_OBJS_PRINTF) $(TARGET)
-	@./$(TEST_DIR)test
-
-testgnl: $(TARGET) $(TEST_OBJS_GNL)
-	@echo -e "$(MAGENTA)Running tests...$(DEF_COLOR)"
-	@$(CC) $(CCFLAGS) -I$(INC_DIR) -o $(TEST_DIR)test $(TEST_OBJS_GNL) $(TARGET)
-	@./$(TEST_DIR)test
+include test.mk
