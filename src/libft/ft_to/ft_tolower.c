@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 08:15:57 by jcheron           #+#    #+#             */
-/*   Updated: 2024/10/16 08:28:45 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/11/07 18:17:59 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_tolower(int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		c += 32;
+	if (ft_isalpha(c))
+		return (c & ~0x20);
 	return (c);
 }

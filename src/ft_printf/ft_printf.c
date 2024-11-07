@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 16:45:35 by jcheron           #+#    #+#             */
-/*   Updated: 2024/10/25 08:38:20 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/11/07 17:37:13 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 #include "ft_printf.h"
 #include <stdarg.h>
 #include <unistd.h>
-
-int	ft_putchar(int c)
-{
-	return (write(1, &c, 1));
-}
 
 static int	ft_formats(va_list args, const char format)
 {
@@ -56,7 +51,7 @@ int	ft_printf(const char *str, ...)
 			i++;
 		}
 		else
-			len += ft_putchar(str[i]);
+			len += write(STDOUT_FILENO, &str[i], 1);
 		i++;
 	}
 	va_end(args);

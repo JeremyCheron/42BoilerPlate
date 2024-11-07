@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 08:03:27 by jcheron           #+#    #+#             */
-/*   Updated: 2024/11/07 17:13:37 by jcheron          ###   ########.fr       */
+/*   Created: 2024/11/07 17:40:47 by jcheron           #+#    #+#             */
+/*   Updated: 2024/11/07 17:46:42 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+static void	_ft_putnbr(unsigned int n)
 {
-	int	i;
-	int	result;
-	int	sign;
+	if (n > 9)
+		_ft_putnbr(n / 10);
+	ft_putchar(n % 10 + '0');
+}
 
-	i = 0;
-	result = 0;
-	sign = 1;
-	while (ft_iswhitespace(str[i]))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+void	ft_putnbr(int n)
+{
+	if (n < 0)
 	{
-		if (str[i] == '-')
-			sign = -sign;
-		i++;
+		ft_putchar('-');
+		n = -n;
 	}
-	while (ft_isdigit(str[i]))
-	{
-		result = (result * 10) + str[i] - '0';
-		i++;
-	}
-	return (result * sign);
+	_ft_putnbr(n);
 }

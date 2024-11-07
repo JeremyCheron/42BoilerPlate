@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 08:06:36 by jcheron           #+#    #+#             */
-/*   Updated: 2024/10/27 15:46:09 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/11/07 17:39:35 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }				t_list;
+
+typedef struct s_split_next
+{
+	size_t	start;
+	size_t	length;
+}				t_split_next;
+
 int		ft_atoi(const char *str);
 
 void	ft_bzero(void *s, size_t n);
@@ -38,6 +45,8 @@ int		ft_isdigit(int c);
 
 int		ft_isprint(int c);
 
+int		ft_iswhitespace(int c);
+
 char	*ft_itoa(int n);
 
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -50,11 +59,17 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 
 void	*ft_memset(void *b, int c, size_t len);
 
+void	ft_putchar(int c);
+
 void	ft_putchar_fd(char c, int fd);
+
+void	ft_putendl(char *s);
 
 void	ft_putendl_fd(char *s, int fd);
 
 void	ft_putnbr_fd(int n, int fd);
+
+void	ft_putstr(char *s);
 
 void	ft_putstr_fd(char *s, int fd);
 
