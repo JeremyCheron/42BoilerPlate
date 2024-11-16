@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 08:06:36 by jcheron           #+#    #+#             */
-/*   Updated: 2024/11/07 17:39:35 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/11/16 12:45:24 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
 void	ft_putstr(char *s);
+
+void	ft_putnbr_base(int n, char *base);
 
 void	ft_putstr_fd(char *s, int fd);
 
