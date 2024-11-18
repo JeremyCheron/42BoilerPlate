@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 08:13:46 by jcheron           #+#    #+#             */
-/*   Updated: 2024/10/17 10:24:25 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/11/18 09:16:50 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 size_t	ft_strlen(const char *s)
 {
-	int	size;
+	const char	*str;
 
-	size = 0;
-	while (s[size])
-		size++;
-	return (size);
+	str = s;
+	while (*str)
+		str++;
+	return (str - s);
 }
