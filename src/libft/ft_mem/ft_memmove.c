@@ -6,7 +6,7 @@
 /*   By: jcheron <jcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:24:24 by jcheron           #+#    #+#             */
-/*   Updated: 2024/10/17 13:44:21 by jcheron          ###   ########.fr       */
+/*   Updated: 2024/11/18 09:03:22 by jcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,3 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 	}
 	return (dest);
 }
-// int main(void)
-// {
-// 	char str[] = "coucou";
-// 	ft_memmove(str + 2, str, 3);
-// 	printf("\n%s\n", str);
-
-// 	char str2[] = "coucou";
-// 	memmove(str2 + 2, str2, 3);
-// 	printf("\n%s\n", str2);
-// }
